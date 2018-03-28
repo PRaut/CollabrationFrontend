@@ -13,6 +13,7 @@ myApp.controller("BlogController", function($scope, $http, $location) {
 	$scope.blogData;
 
 	$scope.insertBlog = function() {
+		alert("In insert blog");
 		console.log("In insertBlog method");
 		$http.post('http://localhost:8082/ChatterMiddleware/addBlog',
 				$scope.blog).then(fetchAllBlogs(), function(response) {
@@ -28,4 +29,6 @@ myApp.controller("BlogController", function($scope, $http, $location) {
 					$scope.blogData = response.data;
 				});
 	}
+	
+	fetchAllBlogs();
 });
