@@ -4,6 +4,8 @@
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -39,7 +41,14 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#!home">Home</a></li>
 					<li><a href="#!about">About Us</a></li>
-					<li><a href="#!blog">Blogs</a></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" 
+						data-toggle="dropdown" href="">Blogs<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#!blog">Create Blog</a></li>
+								<li><a href="#!manageBlogs">Manage Blogs</a></li>
+							</ul>
+					</li>
 					<li><a href="#!signup"><span
 							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 					<li><a href="#!login"><span

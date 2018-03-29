@@ -1,0 +1,42 @@
+<div ng-controller="BlogController">
+	<div class="modal-dialog  modal-lg" style="width: 100%">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="text-center">Manage Blog</h1>
+			</div>
+			<div class="modal-body">
+				
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<th>Blog Name</th>
+								<th>Blog Content</th>
+								<th>Created On</th>
+								<th>Likes</th>
+								<th>Status</th>
+							</thead>
+							<tbody>
+								<tr ng-repeat="blog in blogData">
+									<td>{{blog.blogName}}</td>
+									<td>{{blog.blogContent}}</td>
+									<td>{{blog.createdDate}}</td>
+									<td>{{blog.likes}}</td>
+									<td>{{blog.status}}</td>
+									<td><button type="submit" ng-click="editBlog(blog.blogId)"
+											class="btn btn-default btn-sm btn-info">
+											<span class="glyphicon glyphicon-pencil"></span> Edit
+										</button>
+										<button type="button" ng-click="deleteBlog(blog.blogId)"
+											class="btn btn-default btn-sm btn-danger">
+											<span class="glyphicon glyphicon-trash"
+												></span> Delete
+										</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				
+			</div>
+		</div>
+	</div>
+</div>

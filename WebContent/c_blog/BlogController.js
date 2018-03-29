@@ -1,4 +1,4 @@
-myApp.controller("BlogController", function($scope, $http, $location) {
+myApp.controller("BlogController", function($scope, $http, $location, $route) {
 	console.log("In BlogController");
 
 	$scope.blog = {
@@ -17,10 +17,35 @@ myApp.controller("BlogController", function($scope, $http, $location) {
 		console.log("In insertBlog method");
 		$http.post('http://localhost:8082/ChatterMiddleware/addBlog',
 				$scope.blog).then(fetchAllBlogs(), function(response) {
-			console.log('Status Text ' + response.statusText);
+					$route.reload();
+					console.log('Status Text ' + response.statusText);
+			
 		});
 	};
 
+	$scope.deleteBlog = function(blogId){
+		alert("in delete blog");
+		$http.delete('http://localhost:8082/ChatterMiddleware/deleteBlog/'+blogId)
+		.then(fetchAllBlogs(), function(response){
+			console.log('Blog deleted '+ blogId);
+			console.log('Response Status ' + response.statusText);
+			$route.reload();
+		});
+	};
+	
+	
+	$scope.editBlog = function(blogId){
+//		alert('In editBlog()');
+		$http.get('http://localhost:8082/ChatterMiddleware/getBlog/'+blogId)
+		.then(function(response){
+			console.log('In edit blog');
+			$scope.blog = response.data;
+//			console.log($scope.blog);
+			$location.path('/updateBlog');
+		});
+	};
+	
+	
 	function fetchAllBlogs() {
 		console.log('In fetchAllBlogs method');
 		$http.get('http://localhost:8082/ChatterMiddleware/listBlogs').then(
@@ -28,7 +53,7 @@ myApp.controller("BlogController", function($scope, $http, $location) {
 					console.log('Status Text ' + response.statusText);
 					$scope.blogData = response.data;
 				});
-	}
+	};
 	
 	fetchAllBlogs();
 });
