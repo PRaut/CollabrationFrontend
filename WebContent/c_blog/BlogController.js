@@ -51,6 +51,7 @@ myApp.controller("BlogController", function($scope, $http, $location, $route) {
 		.then(fetchAllBlogs(), function(response){
 			console.log('updated blog'+ blogId+ ' successfully');
 			//$location.path('/manageBlogs');
+			$route.reload();
 		});
 		
 	};
