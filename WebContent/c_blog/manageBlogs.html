@@ -1,3 +1,4 @@
+<script type="text/javascript" src="js/modalAction.js"></script>
 <div ng-controller="BlogController">
 	<div class="modal-dialog  modal-lg" style="width: 100%">
 		<div class="modal-content">
@@ -5,37 +6,77 @@
 				<h1 class="text-center">Manage Blog</h1>
 			</div>
 			<div class="modal-body">
-				
-					<div class="table-responsive">
-						<table class="table table-hover">
-							<thead>
-								<th>Blog Name</th>
-								<th>Blog Content</th>
-								<th>Created On</th>
-								<th>Likes</th>
-								<th>Status</th>
-							</thead>
-							<tbody>
-								<tr ng-repeat="blog in blogData">
-									<td>{{blog.blogName}}</td>
-									<td>{{blog.blogContent}}</td>
-									<td>{{blog.createdDate}}</td>
-									<td>{{blog.likes}}</td>
-									<td>{{blog.status}}</td>
-									<td><button type="submit" ng-click="editBlog(blog.blogId)"
-											class="btn btn-default btn-sm btn-info">
-											<span class="glyphicon glyphicon-pencil"></span> Edit
-										</button>
-										<button type="button" ng-click="deleteBlog(blog.blogId)"
-											class="btn btn-default btn-sm btn-danger">
-											<span class="glyphicon glyphicon-trash"
-												></span> Delete
-										</button></td>
-								</tr>
-							</tbody>
-						</table>
+
+				<div class="table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<th>Blog Name</th>
+							<th>Blog Content</th>
+							<th>Created On</th>
+							<th>Likes</th>
+							<th>Status</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="blog in blogData">
+								<td>{{blog.blogName}}</td>
+								<td>{{blog.blogContent}}</td>
+								<td>{{blog.createdDate}}</td>
+								<td>{{blog.likes}}</td>
+								<td>{{blog.status}}</td>
+								<td>
+									<button type="submit"
+										id="btnShowEditForm"
+										
+										ng-click="editBlog(blog.blogId)"
+										class="btn btn-default btn-sm btn-info">
+										<span class="glyphicon glyphicon-pencil"></span> Edit
+									</button>
+									<button type="button" ng-click="deleteBlog(blog.blogId)"
+										class="btn btn-default btn-sm btn-danger" class="close" data-dismiss="modal">
+										<span class="glyphicon glyphicon-trash"></span>
+										Delete
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<!-- ---------------  Modal Dialog for Edit/Update Blog ---------------------- -->
+	<div class="modal fade" id="editBlogForm" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button class="close" data-dismiss="modal">&times;</button>
+					<h4 class="text-center">Update Blog</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<form class="col-md-12 center-block" id="blogForm" method="POST">
+							<div class="form-group">
+								<input type="hidden" ng-model="blog.blogId" ng-bind="blog.blogId"/>
+							
+								<input type="text" class="form-control input-lg" name="blogName"
+									placeholder="Blog name" ng-model="blog.blogName" />
+							</div>
+							<div class="form-group">
+								<textarea class="form-control input-lg" rows="3"
+									name="blogContent" placeholder="Blog content"
+									ng-model="blog.blogContent" >
+								</textarea>
+							</div>
+							<div class=form-group>
+								<input type="submit" class="btn btn-lg btn-success" id="btnUpdateBlog"
+									value="Update Blog" ng-click="updateBlog(blog.blogId)">
+								<input type="reset" class="btn btn-lg btn-default" value="Reset">
+							</div>
+						</form>
 					</div>
-				
+				</div>
 			</div>
 		</div>
 	</div>
