@@ -1,3 +1,4 @@
+<script type="text/javascript" src="js/modalAction.js"></script>
 <div ng-controller="ForumController">
 	<div class="modal-dialog  modal-lg" style="width: 100%">
 		<div class="modal-content">
@@ -21,8 +22,12 @@
 								<td>{{forum.createdDate}}</td>
 								<td>{{forum.status}}</td>
 								<td>
-									<button type="submit" id="btnShowEditForm"
-										class="btn btn-default btn-sm btn-info">
+									<button type="submit" id="btnShowEditForumForm"
+										class="btn btn-default btn-sm btn-info"
+										data-toggle="modal"
+										data-target="#editForumForm"
+										ng-click="editForum(forum.forumId)"
+										>
 										<span class="glyphicon glyphicon-pencil"></span> Edit
 									</button>
 									<button type="button" ng-click="deleteForum(forum.forumId)"
@@ -37,4 +42,45 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- ---------------  Modal Dialog for Edit/Update Forum ---------------------- -->
+	<div class="modal fade" id="editForumForm" tabindex="-1"
+		data-keyboard="false" data-backdrop="static" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">&times;</button>
+					<h4 class="text-center">Update Forum</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<form class="col-md-12 center-block" id="blogForm" method="POST">
+							<div class="form-group">
+								<input type="hidden" ng-model="forum.forumId"
+									ng-model="forum.forumId" /> 
+								<input type="text" class="form-control input-lg" name="forumName"
+									placeholder="Forum name" ng-model="forum.forumName" />
+							</div>
+							<div class="form-group">
+								<textarea class="form-control input-lg" rows="3"
+									name="blogContent" placeholder="Forum content"
+									ng-model="forum.forumContent">
+								</textarea>
+							</div>
+							<div class=form-group>
+								<input type="submit" class="btn btn-lg btn-success"
+									id="btnUpdateForum" 
+									value="Update forum"
+									ng-click="updateForum(forum.forumId)">
+									
+								 <input type="reset"
+									class="btn btn-lg btn-default" value="Reset">
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>

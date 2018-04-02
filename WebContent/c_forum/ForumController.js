@@ -29,7 +29,28 @@ myApp.controller('ForumController',function( $scope, $http, $location,$route ){
 			$route.reload();
 		});
 	 };
+	 
+	 $scope.editForum = function(forumId){
+		console.log('Inside editForum()');
+		$http.get('http://localhost:8082/ChatterMiddleware/getForum/'+ forumId)
+		.then(function(response){
+			console.log('Found forum to edit :'+ response.data);
+			$scope.forum = response.data;
+		});
+	 };
 	
+	 
+	 $scope.updateForum = function(forumId){
+		console.log('inside updateForum()');
+		$http.put('http://localhost:8082/ChatterMiddleware/updateForum/'+ forumId, $scope.forum)
+		.then(fetchAllForums(),function(response){
+			//console.log('forum update successfully');
+			$location.path('/manageForums');
+			$route.reload();
+		});
+	 };
+	 
+	 
 	function fetchAllForums(){
 		console.log('In fetchAllForums()');
 		$http.get('http://localhost:8082/ChatterMiddleware/listForums')
