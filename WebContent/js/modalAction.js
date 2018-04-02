@@ -8,4 +8,15 @@ $(document).ready(function(){
 	$("#btnUpdateBlog").click(function(){
 		$("#editBlogForm").modal('hide');
 	});
+	
+	$("#btnShowEditForumForm").click(function(){
+		$('#editForumForm').modal('show');
+	});
+	
+	$("#btnUpdateForum").click(function(){
+		console.log('closing editForumForm');
+		$('#editForumForm').modal('hide');
+	})
+	
+	
 });
