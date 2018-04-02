@@ -50,10 +50,9 @@ myApp.controller("BlogController", function($scope, $http, $location, $route) {
 		$http.put('http://localhost:8082/ChatterMiddleware/updateBlog/'+ blogId, $scope.blog)
 		.then(fetchAllBlogs(), function(response){
 			console.log('updated blog'+ blogId+ ' successfully');
-			//$location.path('/manageBlogs');
+			$location.path('/manageBlogs');
 			//console.log(blogId +" updated successfully");
-			$route.reload();
-			
+			//$route.reload();
 		});
 		
 	};
