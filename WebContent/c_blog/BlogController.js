@@ -52,7 +52,7 @@ myApp.controller("BlogController", function($scope, $http, $location, $route) {
 			console.log('updated blog'+ blogId+ ' successfully');
 			$location.path('/manageBlogs');
 			//console.log(blogId +" updated successfully");
-			//$route.reload();
+			$route.reload();
 		});
 		
 	};
