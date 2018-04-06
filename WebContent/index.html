@@ -17,12 +17,14 @@
 <!-- Angular Js -->
 <script type="text/javascript" src="js/angular.js"></script>
 <script type="text/javascript" src="js/angular-route.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
 
 <!-- My Angular Controller -->
 <script type="text/javascript" src="js/mainctrl.js"></script>
 <!-- <script type="text/javascript" src="js/modalAction.js"></script> -->
 <script type="text/javascript" src="c_blog/BlogController.js"></script>
 <script type="text/javascript" src="c_forum/ForumController.js"></script>
+<script type="text/javascript" src="c_user/UserController.js"></script>
 
 <link rel="stylesheet" href="css/main.css" />
 </head>
@@ -43,12 +45,14 @@
 			<div class="collapse navbar-collapse navbar-right" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#!home">Home</a></li>
-					<li><a href="#!about">About Us</a></li>
+					<li ng-hide="currentUser.role == 'USER' || currentUser.role == 'ADMIN'"><a href="#!about">About Us</a></li>
 					
 					<!-- Blogs -->
 					<li class="dropdown">
-						<a class="dropdown-toggle" 
-						data-toggle="dropdown" href="">Blogs<span class="caret"></span></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="" 
+						ng-show="currentUser.role == 'USER' || currentUser.role == 'ADMIN'">
+							Blogs<span class="caret"></span>
+						</a>
 							<ul class="dropdown-menu">
 								<li><a href="#!blog">Create Blog</a></li>
 								<li><a href="#!manageBlogs">Manage Blogs</a></li>
@@ -59,6 +63,7 @@
 					<!-- Forum -->
 					<li class="dropdown">
 						<a class="dropdown-toggle" 
+						ng-show="currentUser.role == 'USER' || currentUser.role == 'ADMIN'"
 						data-toggle="dropdown" href="">Forum<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="#!createForum">Create forum</a></li>
@@ -66,12 +71,40 @@
 							</ul>
 					</li>
 					<!-- Forum END -->
-					<li><a href="#!signup"><span
-							class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-					<li><a href="#!login"><span
-							class="glyphicon glyphicon-log-in"></span> Login</a></li>
+					
+					<!-- JOB -->
+					<li class="dropdown">
+						<a class="dropdown-toggle" 
+						ng-show="currentUser.role == 'USER' || currentUser.role == 'ADMIN'"
+						data-toggle="dropdown" href="">Jobs<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#!createJob">Add Job</a></li>
+								<li><a href="#!manageJobs">Manage Jobs</a></li>
+							</ul>
+					</li>
+					<!-- JOB END -->
+					
+					
+					<li ng-hide="currentUser.role == 'USER' || currentUser.role == 'ADMIN'">
+						<a href="#!signup">
+							<span class="glyphicon glyphicon-user"></span> Sign Up
+						</a>
+					</li>
+					<li ng-hide="currentUser.role == 'USER' || currentUser.role == 'ADMIN'">
+						<a href="#!login"><span
+							class="glyphicon glyphicon-log-in"></span> Login</a>
+					</li>
 					<li><a href="#!contactus">Contact Us</a></li>
+					<li ng-show="currentUser.role== 'USER'"><a href="!userProfile">Profile</a></li>
+					<li class="nav navbar-nav" ng-controller="UserController" ng-hide ="currentUser == undefined" >
+						<span>	
+							{{currentUser.userName}}
+							<button  type="submit" class="btn btn-sm btn-info" ng-click="logout()">Logout</button>
+						</span>	
+					</li>
 				</ul>
+				
+				
 			</div>
 		</div>
 	</nav>
