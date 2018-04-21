@@ -25,6 +25,14 @@
 <script type="text/javascript" src="c_blog/BlogController.js"></script>
 <script type="text/javascript" src="c_forum/ForumController.js"></script>
 <script type="text/javascript" src="c_user/UserController.js"></script>
+<script type="text/javascript" src="c_chat/ChatController.js"></script>
+<script type="text/javascript" src="c_chat/ChatService.js"></script>
+
+<!-- Links for Chat -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.3/lodash.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.1/sockjs.js"></script>
+
 
 <link rel="stylesheet" href="css/main.css" />
 </head>
@@ -95,10 +103,15 @@
 							class="glyphicon glyphicon-log-in"></span> Login</a>
 					</li>
 					<li><a href="#!contactus">Contact Us</a></li>
-					<li ng-show="currentUser.role== 'USER'"><a href="!userProfile">Profile</a></li>
+					<li ng-show="currentUser.role== 'USER'"><a href="#!chat">Chat</a></li>
+					<!-- <li ng-show="currentUser.role== 'USER'"><a href="!userProfile">Profile</a></li> -->
+					<li ng-show="currentUser.role== 'USER'"><a href="#!uploadPic">Upload Picture</a></li>
+					
+					
 					<li class="nav navbar-nav" ng-controller="UserController" ng-hide ="currentUser == undefined" >
 						<span>	
 							{{currentUser.userName}}
+							<img id="img1" class="avatar" src="http://localhost:8082/ChatterMiddleware/getImage/{{currentUser.userName}}" width="20 height=20"></img>
 							<button  type="submit" class="btn btn-sm btn-info" ng-click="logout()">Logout</button>
 						</span>	
 					</li>
