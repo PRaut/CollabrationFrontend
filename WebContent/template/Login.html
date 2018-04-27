@@ -15,21 +15,34 @@
 			<div class="modal-header">
 				<h1 class="text-center">Login</h1>
 			</div>
-			<div class="modal-body">
+			<div class="modal-body" ng-controller="UserController">
 				<div class="row">
 					<form class="col-md-12 center-block">
 						<div class="form-group">
 							<input type="text" class="form-control input-lg"
-								placeholder="Email" />
+								placeholder="Username" 
+								ng-model="user.userName"
+								id="userName"
+								/>
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control input-lg"
-								placeholder="Password" />
+								placeholder="Password"
+								ng-model="user.password"
+								id="password"
+							 />
+							 
 						</div>
 						<div class=form-group>
-							<input type="submit" class="btn btn-lg btn-block btn-primary"
-								value="Login"> <span class="pull-right"> <a
-								href="#">Register</a> <a href="#">Forgot Password</a>
+							<input type="submit" 
+								class="btn btn-lg btn-block btn-primary"
+								value="Login"
+								ng-click="login()"
+								> 
+								
+							<span class="pull-right">
+								<a href="#">Register</a> 
+								<a href="#">Forgot Password</a>
 							</span>
 						</div>
 					</form>
