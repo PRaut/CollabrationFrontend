@@ -1,4 +1,4 @@
-var myApp = angular.module("myApp", [ "ngRoute" ]);
+var myApp = angular.module("myApp", [ 'ngRoute' , 'ngCookies']);
 
 myApp.config(function($routeProvider) {
 
@@ -10,6 +10,9 @@ myApp.config(function($routeProvider) {
 		.when("/signup", { templateUrl : "template/SignUp.html" })
 		.when("/contactus", { templateUrl : "template/ContactUs.html"})
 		
+		//users
+		.when("/uploadPic", {templateUrl: "c_user/UpdateProfile.html"})
+		
 		// Blogs
 		.when("/blog", { templateUrl : "c_blog/blog.html" })
 		.when("/manageBlogs", {templateUrl: "c_blog/manageBlogs.html"})
@@ -18,4 +21,21 @@ myApp.config(function($routeProvider) {
 		// forum
 		.when("/createForum", {templateUrl: "c_forum/createForum.html"})
 		.when("/manageForums", {templateUrl: "c_forum/manageForums.html"})
+		
+		// chat
+		.when("/chat", {templateUrl: "c_chat/chat.html"})
+});
+
+
+// run() to handle user details stored cookieStore
+myApp.run(function($rootScope, $cookieStore){
+	console.log('inside run() to handle cookie data');
+	console.log($rootScope.currentUser);
+	
+	if($rootScope.currentUser == undefined){
+		$rootScope.currentUser = $cookieStore.get('userDetails');
+	}else{
+		console.log('in else no user found'+ $rootScope.currentUser.userName);
+		console.log('User role found'+ $rootScope.currentUser.role);
+	}
 });
