@@ -8,7 +8,7 @@ myApp.controller("ChatController", function($scope,$rootScope,chatService)
     {  
     	console.log("I am In message fun'n");
     	
-        chatService.send($rootScope.currentUser.loginName+":" +$scope.message);
+        chatService.send($rootScope.currentUser.userName+":" +$scope.message);
         $scope.message="";
     };
     chatService.receive().then(null,null,function(message)
