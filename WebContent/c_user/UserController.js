@@ -35,8 +35,15 @@ myApp.controller("UserController", function($scope, $http, $location, $rootScope
 	$rootScope.logout=function()
 	{
 		console.log('Logout Function');
-		delete $rootScope.currentUser;
-		$cookieStore.remove('userDetails');
-		$location.path("/home");
-	}
+		$http.post('http://localhost:8082/ChatterMiddleware/logout', $scope.user)
+		.then(function(response){
+			//$rootScope.currentUser = response.data;
+			console.log('Logout Success'+ response.statusText);
+			//console.log('Current user '+ $rootScope.currentUser.userName);
+			delete $rootScope.currentUser;
+			$cookieStore.remove('userDetails');
+			$location.path("/");
+		});
+	};
+	
 });
