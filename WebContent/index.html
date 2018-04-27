@@ -108,14 +108,22 @@
 					<li ng-show="currentUser.role== 'USER'"><a href="#!uploadPic">Upload Picture</a></li>
 					
 					
-					<li class="nav navbar-nav" ng-controller="UserController" ng-hide ="currentUser == undefined" >
+					 
+					<!-- <li class="nav navbar-nav"  ng-hide ="currentUser == undefined" ng-controller="UserController" >
 						<span>	
 							{{currentUser.userName}}
 							<img id="img1" class="avatar" src="http://localhost:8082/ChatterMiddleware/getImage/{{currentUser.userName}}" width="20 height=20"></img>
 							<button  type="submit" class="btn btn-sm btn-info" ng-click="logout()">Logout</button>
 						</span>	
-					</li>
+					</li> -->
 				</ul>
+				<div class="nav navbar-nav navbar-right" ng-hide="currentUser==undefined">
+						<ul class="nav navbar-nav">
+						 Welcome {{currentUser.userName}}
+						 		<img id="img1" class="avatar" src="http://localhost:8082/ChatterMiddleware/getImage/{{currentUser.userName}}" width="20 height=20"></img>
+						<form ng-controller="UserController"><input type="submit" value="logout" ng-click="logout()" class="btn btn-info"/></form>
+						</ul>
+					</div>
 				
 				
 			</div>
