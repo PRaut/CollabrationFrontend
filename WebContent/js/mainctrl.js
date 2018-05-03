@@ -15,11 +15,13 @@ myApp.config(function($routeProvider) {
 		
 		// Blogs
 		.when("/blog", { templateUrl : "c_blog/blog.html" })
+		.when("/showAllBlogs", {templateUrl: "c_blog/showAllBlogs.html"})
 		.when("/manageBlogs", {templateUrl: "c_blog/manageBlogs.html"})
 		.when("/updateBlog", {templateUrl: "c_blog/updateBlog.html"})
 		
 		// forum
 		.when("/createForum", {templateUrl: "c_forum/createForum.html"})
+		.when("/showAllForums", {templateUrl: "c_forum/showAllForums.html"})
 		.when("/manageForums", {templateUrl: "c_forum/manageForums.html"})
 		
 		// chat
