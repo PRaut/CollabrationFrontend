@@ -16,13 +16,13 @@
 							<th>Status</th>
 						</thead>
 						<tbody>
-							<tr ng-repeat="forum in forumData">
+							<tr ng-repeat="forum in forums" >
 								<td>{{forum.forumName}}</td>
 								<td>{{forum.forumContent}}</td>
 								<td>{{forum.createdDate}}</td>
 								<td>{{forum.status}}</td>
 								<td>
-									<button type="submit" id="btnShowEditForumForm"
+									<button type="submit" id="btnShowEditForumForm" 
 										class="btn btn-default btn-sm btn-info"
 										data-toggle="modal"
 										data-target="#editForumForm"
@@ -30,7 +30,7 @@
 										>
 										<span class="glyphicon glyphicon-pencil"></span> Edit
 									</button>
-									<button type="button" ng-click="deleteForum(forum.forumId)"
+									<button type="button" ng-click="deleteForum(forum.forumId)" 
 										class="btn btn-default btn-sm btn-danger" class="close">
 										<span class="glyphicon glyphicon-trash"></span> Delete
 									</button>
