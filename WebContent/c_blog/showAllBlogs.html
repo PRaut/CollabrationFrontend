@@ -1,0 +1,33 @@
+<div ng-controller='BlogController'>
+	<div class="col-xs-12" ng-repeat="blog in blogData">
+		<div class="well" ng-hide = 'blog.userName == currentUser.userName' style="background-color:white;">
+			<section>
+				<header>
+					<section class="pull-right">
+						<p>
+							<strong>{{blog.userName}}</strong><br />{{blog.createdDate}}
+					</section>
+				</header>
+				<br>
+			</section>
+
+			<section>
+				<header>
+					<h4>{{blog.blogName}}</h4>
+				</header>
+				<article>
+					<p>{{blog.blogContent}}</p>
+				</article>
+				<footer>
+				<hr/>
+					 <button type="button" class="btn btn-default btn-sm">
+			            <span class="glyphicon glyphicon-thumbs-up"></span> Like
+			        </button>
+					<button type="button" class="btn btn-default btn-sm">
+						<span class="glyphicon glyphicon-comment"></span> Comment
+					</button>
+				</footer>
+			</section>
+		</div>
+	</div>
+</div>
