@@ -13,18 +13,17 @@
 							<th>Blog Name</th>
 							<th>Blog Content</th>
 							<th>Created On</th>
-							<th>Likes</th>
 							<th>Status</th>
 						</thead>
 						<tbody>
 							<tr ng-repeat="blog in blogData">
-								<td>{{blog.blogName}}</td>
-								<td>{{blog.blogContent}}</td>
-								<td>{{blog.createdDate}}</td>
-								<td>{{blog.likes}}</td>
-								<td>{{blog.status}}</td>
-								<td>
-									<button type="submit"
+								<td ng-hide='blog.userName != currentUser.userName'>{{blog.blogName}}</td>
+								<td ng-hide='blog.userName != currentUser.userName'>{{blog.blogContent}}</td>
+								<td ng-hide='blog.userName != currentUser.userName'>{{blog.createdDate}}</td>
+								<td ng-hide='blog.userName != currentUser.userName'>{{blog.status}}</td>
+								<td ng-hide='blog.userName != currentUser.userName'>
+									
+									<button type="submit" 
 										id="btnShowEditForm"
 										data-target="#editBlogForm"
 										data-toggle="modal"
